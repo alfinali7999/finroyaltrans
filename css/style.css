@@ -109,7 +109,7 @@ ul { list-style: none; }
     gap: 10px;
     flex-shrink: 0;
 }
-.logo img { height: 60px; width: auto; }
+.logo img { height: 80px; width: auto; }
 .logo-text {
     font-size: 18px;
     font-weight: 800;
