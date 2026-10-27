@@ -684,7 +684,7 @@ ul { list-style: none; }
     gap: 10px;
     margin-bottom: 16px;
 }
-.footer-logo img { height: 40px; }
+.footer-logo img { height: 80px; }
 .footer-logo span {
     font-size: 18px;
     font-weight: 800;
