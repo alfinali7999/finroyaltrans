@@ -117,3 +117,77 @@ document.querySelectorAll('.feature-card, .car-card, .artikel-card, .kontak-item
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
+
+// ===== GALERI LIGHTBOX =====
+document.addEventListener("DOMContentLoaded", () => {
+    const galeriItems = document.querySelectorAll('.galeri-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+
+    let currentIndex = 0;
+    const images = [];
+
+    // Kumpulkan semua URL gambar
+    galeriItems.forEach((item, index) => {
+        const img = item.querySelector('.galeri-img');
+        images.push(img.src);
+
+        item.addEventListener('click', () => {
+            currentIndex = index;
+            showImage(currentIndex);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Cegah scroll body
+        });
+    });
+
+    // Fungsi Menampilkan Gambar
+    function showImage(index) {
+        lightboxImg.src = images[index];
+    }
+
+    // Tombol Tutup (X)
+    lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+
+    // Klik area luar gambar untuk menutup
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Tombol Navigasi Kanan Kiri
+    lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    });
+
+    lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    });
+
+    // Fitur Keyboard (Kanan, Kiri, Esc)
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'ArrowRight') {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            } else if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            } else if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+});
