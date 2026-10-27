@@ -855,7 +855,7 @@ ul { list-style: none; }
 
 @media (max-width: 480px) {
     .logo-text { font-size: 15px; }
-    .logo img { height: 60px; }
+    .logo img { height: 80px; }
     .hero-buttons { flex-direction: column; }
     .hero-buttons .btn { width: 100%; justify-content: center; }
     .hero-stats { justify-content: space-between; gap: 16px; }
