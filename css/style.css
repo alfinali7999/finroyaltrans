@@ -99,7 +99,7 @@ ul { list-style: none; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 72px;
+    height: 85px;
     gap: 20px;
 }
 
@@ -109,7 +109,7 @@ ul { list-style: none; }
     gap: 10px;
     flex-shrink: 0;
 }
-.logo img { height: 40px; width: auto; }
+.logo img { height: 60px; width: auto; }
 .logo-text {
     font-size: 18px;
     font-weight: 800;
@@ -855,7 +855,7 @@ ul { list-style: none; }
 
 @media (max-width: 480px) {
     .logo-text { font-size: 15px; }
-    .logo img { height: 34px; }
+    .logo img { height: 60px; }
     .hero-buttons { flex-direction: column; }
     .hero-buttons .btn { width: 100%; justify-content: center; }
     .hero-stats { justify-content: space-between; gap: 16px; }
